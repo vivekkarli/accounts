@@ -206,13 +206,12 @@ public class AccountsController {
     @GetMapping("/build-info")
     public ResponseEntity<String> getBuildInfo() {
         logger.info("getBuildInfo() got invoked");
-        throw new NullPointerException();
-        /*return ResponseEntity
+        return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(buildVersion);*/
+                .body(buildVersion);
     }
 
-    private ResponseEntity<String> getBuildInfoFallback(Throwable throwable) {
+    public ResponseEntity<String> getBuildInfoFallback(Throwable throwable) {
         logger.info("getBuildInfoFallback() got invoked");
         return ResponseEntity
                 .status(HttpStatus.OK)
@@ -245,7 +244,7 @@ public class AccountsController {
                 .body(environment.getProperty("JAVA_HOME"));
     }
 
-    private ResponseEntity<String> getJavaVersionFallback(Throwable throwable) {
+    public ResponseEntity<String> getJavaVersionFallback(Throwable throwable) {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(environment.getProperty("JAVA 21"));
